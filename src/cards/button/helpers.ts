@@ -65,7 +65,17 @@ export function updateEntity(context, value) {
           entity_id: context.config.entity,
           value: adjustedValue
       });
-  }
+  } else if (isEntityType(context, "cover")) {
+    const minValue = 0;
+    const maxValue = 100;
+    const step = 1;
+    let rawValue = (maxValue - minValue) * value / 100 + minValue;
+    let adjustedValue = Math.round(rawValue / step) * step;
+    context._hass.callService('cover', 'set_cover_position', {
+        entity_id: context.config.entity,
+        value: adjustedValue
+    });
+}
 };
 export const throttledUpdateEntity = throttle(updateEntity, 100);
 
