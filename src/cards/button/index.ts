@@ -29,6 +29,8 @@ export function handleButton(context, container = context.content, appendTo = co
             createStateStructure(context);
         } else if (buttonType === 'name') {
             createNameStructure(context);
+        } else if (buttonType === 'cover') {
+            createSliderStructure(context);
         }
     }
 
