@@ -69,7 +69,7 @@ class BubbleCard extends HTMLElement {
 
             // Update cover card
             case 'cover' :
-                handleCover(this);
+                handleButton(this);
                 break;
 
             // Update empty card
